@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mission Briefing: SpaceX Data Pipeline</title>
+    <style>
+        :root {
+            --primary: #005288; /* SpaceX Blue */
+            --accent: #111;
+            --text: #333;
+            --bg: #fff;
+            --code-bg: #f5f5f5;
+            --border: #ddd;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 40px;
+            background: var(--bg);
+        }
+
+        /* Header Section */
+        header {
+            border-bottom: 3px solid var(--primary);
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: var(--accent);
+            font-size: 2.4em;
+            margin: 0 0 10px 0;
+            letter-spacing: -0.5px;
+        }
+
+        .meta-data {
+            background: #f8f9fa;
+            padding: 15px;
+            border-left: 4px solid var(--primary);
+            margin-bottom: 30px;
+        }
+
+        .meta-data p {
+            margin: 5px 0;
+            font-size: 0.95em;
+        }
+
+        .label {
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            font-size: 0.85em;
+            letter-spacing: 0.5px;
+            margin-right: 8px;
+        }
+
+        /* Typography */
+        h2 {
+            margin-top: 40px;
+            color: var(--accent);
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        h3 {
+            color: var(--primary);
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: 1.2em;
+        }
+
+        /* Pipeline Visual */
+        .pipeline-viz {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: var(--code-bg);
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            font-family: 'Consolas', monospace;
+            font-size: 0.9em;
+            flex-wrap: wrap;
+        }
+
+        .pipeline-step {
+            background: white;
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-weight: 600;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.9em;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        th {
+            background: var(--primary);
+            color: white;
+            text-align: left;
+            padding: 12px;
+            font-weight: 600;
+        }
+
+        td {
+            border: 1px solid var(--border);
+            padding: 10px 12px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        /* Code & Tech */
+        code {
+            background: var(--code-bg);
+            padding: 2px 5px;
+            border-radius: 3px;
+            font-family: 'Consolas', monospace;
+            color: #d63384;
+            font-size: 0.9em;
+        }
+
+        /* Special Sections */
+        .hacker-mode {
+            background: #2d2d2d;
+            color: #e0e0e0;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 40px;
+            border-left: 5px solid #ff4444;
+        }
+        
+        .hacker-mode h2 {
+            color: #fff;
+            border-bottom-color: #555;
+            margin-top: 0;
+        }
+
+        .hacker-mode code {
+            background: #444;
+            color: #ff9999;
+        }
+
+        .quote {
+            text-align: center;
+            font-style: italic;
+            color: #666;
+            margin-top: 50px;
+            padding: 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        /* Lists */
+        ul {
+            padding-left: 20px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        strong.critical {
+            color: #d9534f;
+            background: #fff5f5;
+            padding: 0 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🚀 Mission Briefing: SpaceX Data Pipeline</h1>
+    </header>
+
+    <div class="meta-data">
+        <p><span class="label">Role:</span> Junior Data Engineer, Flight Analytics Team</p>
+        <p><span class="label">Clearance Level:</span> Intermediate / Advanced</p>
+        <p><span class="label">Objective:</span> Ingest telemetry, normalize architecture, and generate mission insights.</p>
+    </div>
+
+    <section>
+        <h2>📋 The Scenario</h2>
+        <p>The Flight Analytics team has access to the public SpaceX API, but the data is nested JSON and difficult to analyze historically. Your mission is to build an <strong>ETL (Extract, Transform, Load)</strong> pipeline.</p>
+        <p>You will harvest raw data from the API, structure it into a clean SQLite relational database, and use <code>pandas</code> to generate a briefing report on launch reliability and rocket performance.</p>
+    </section>
+
+    <section>
+        <h2>⚙️ Mission Architecture</h2>
+        <p>You are building a pipeline that flows as follows:</p>
+        <div class="pipeline-viz">
+            <div class="pipeline-step">SpaceX Cloud API</div>
+            <div>➔</div>
+            <div class="pipeline-step">Python Script</div>
+            <div>➔</div>
+            <div class="pipeline-step">SQLite Data Warehouse</div>
+            <div>➔</div>
+            <div class="pipeline-step">Pandas Analysis</div>
+        </div>
+    </section>
+
+    <section>
+        <h2>🧱 Phase 1: Database Architecture (The Hangar)</h2>
+        <p>You must design a <strong>Normalized (3NF)</strong> database. We do not store redundant strings. We store entities once and reference them by ID.</p>
+
+        <h3>1️⃣ Table: rockets</h3>
+        <p><em>Stores distinct rocket configurations.</em></p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Column</th>
+                    <th>Type</th>
+                    <th>Constraints</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>id</td>
+                    <td>INTEGER</td>
+                    <td>PK, AUTOINCREMENT</td>
+                    <td>Our internal Integer ID</td>
+                </tr>
+                <tr>
+                    <td>spacex_id</td>
+                    <td>TEXT</td>
+                    <td>UNIQUE</td>
+                    <td>Original alphanumeric ID (e.g., "5e9d...")</td>
+                </tr>
+                <tr>
+                    <td>name</td>
+                    <td>TEXT</td>
+                    <td></td>
+                    <td>e.g., "Falcon 9"</td>
+                </tr>
+                <tr>
+                    <td>type</td>
+                    <td>TEXT</td>
+                    <td></td>
+                    <td>e.g., "rocket"</td>
+                </tr>
+                <tr>
+                    <td>active</td>
+                    <td>INTEGER</td>
+                    <td></td>
+                    <td>1 = Active, 0 = Retired</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>2️⃣ Table: launchpads</h3>
+        <p><em>Stores distinct launch sites.</em></p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Column</th>
+                    <th>Type</th>
+                    <th>Constraints</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>id</td>
+                    <td>INTEGER</td>
+                    <td>PK, AUTOINCREMENT</td>
+                    <td>Our internal Integer ID</td>
+                </tr>
+                <tr>
+                    <td>spacex_id</td>
+                    <td>TEXT</td>
+                    <td>UNIQUE</td>
+                    <td>Original alphanumeric ID</td>
+                </tr>
+                <tr>
+                    <td>name</td>
+                    <td>TEXT</td>
+                    <td></td>
+                    <td>e.g., "KSC LC 39A"</td>
+                </tr>
+                <tr>
+                    <td>region</td>
+                    <td>TEXT</td>
+                    <td></td>
+                    <td>e.g., "Florida"</td>
+                </tr>
+                <tr>
+                    <td>latitude</td>
+                    <td>REAL</td>
+                    <td></td>
+                    <td>Geospatial latitude</td>
+                </tr>
+                <tr>
+                    <td>longitude</td>
+                    <td>REAL</td>
+                    <td></td>
+                    <td>Geospatial longitude</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>3️⃣ Table: launches</h3>
+        <p><em>The core event log. Links Rockets and Launchpads via Foreign Keys.</em></p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Column</th>
+                    <th>Type</th>
+                    <th>Constraints</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>id</td>
+                    <td>INTEGER</td>
+                    <td>PK, AUTOINCREMENT</td>
+                    <td>Our internal Integer ID</td>
+                </tr>
+                <tr>
+                    <td>spacex_id</td>
+                    <td>TEXT</td>
+                    <td>UNIQUE</td>
+                    <td>Original alphanumeric ID</td>
+                </tr>
+                <tr>
+                    <td>name</td>
+                    <td>TEXT</td>
+                    <td></td>
+                    <td>Mission Name (e.g., "Starlink 4-1")</td>
+                </tr>
+                <tr>
+                    <td>date_utc</td>
+                    <td>TEXT</td>
+                    <td></td>
+                    <td>ISO Timestamp</td>
+                </tr>
+                <tr>
+                    <td>success</td>
+                    <td>INTEGER</td>
+                    <td></td>
+                    <td>1 = Success, 0 = Failure (Check for Nulls!)</td>
+                </tr>
+                <tr>
+                    <td>rocket_id</td>
+                    <td>INTEGER</td>
+                    <td>FK -> rockets.id</td>
+                    <td><strong class="critical">CRITICAL:</strong> Use our internal id, not spacex_id</td>
+                </tr>
+                <tr>
+                    <td>launchpad_id</td>
+                    <td>INTEGER</td>
+                    <td>FK -> launchpads.id</td>
+                    <td><strong class="critical">CRITICAL:</strong> Use our internal id, not spacex_id</td>
+                </tr>
+                <tr>
+                    <td>details</td>
+                    <td>TEXT</td>
+                    <td></td>
+                    <td>Description of the mission</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+
+    <section>
+        <h2>🌐 Phase 2: Intelligence Gathering (API)</h2>
+        <p><strong>Base URL:</strong> <code>https://api.spacexdata.com/v4</code></p>
+        
+        <h3>Launches: <code>/launches</code></h3>
+        <ul>
+            <li><strong>Strategy:</strong> Fetch all launches first.</li>
+            <li><strong>Extraction:</strong> Iterate through launches to collect the unique <code>rocket</code> strings and <code>launchpad</code> strings involved.</li>
+        </ul>
+
+        <h3>Rockets: <code>/rockets/{id}</code></h3>
+        <ul>
+            <li><strong>Strategy:</strong> Do not hit the API 100 times for the same rocket. Create a unique set of Rocket IDs found in the launches, and fetch their details <strong>once</strong>.</li>
+        </ul>
+
+        <h3>Launchpads: <code>/launchpads/{id}</code></h3>
+        <ul>
+            <li><strong>Strategy:</strong> Same efficiency rule applies. Fetch each unique launchpad only once.</li>
+        </ul>
+    </section>
+
+    <section>
+        <h2>🧠 Phase 3: Execution Protocols</h2>
+        
+        <h3>Task 1: Extraction & Deduplication</h3>
+        <ul>
+            <li>Fetch the full launch manifest.</li>
+            <li>Identify the unique list of Rocket IDs and Launchpad IDs required.</li>
+            <li>Fetch the details for those specific rockets and launchpads.</li>
+        </ul>
+
+        <h3>Task 2: Database Construction</h3>
+        <ul>
+            <li>Initialize <code>spacex.db</code>.</li>
+            <li>Create the three tables with the exact schema defined in Phase 1.</li>
+        </ul>
+
+        <h3>Task 3: The "load" (ETL)</h3>
+        <ul>
+            <li><strong>Insert Rockets & Launchpads first:</strong> Use <code>INSERT OR IGNORE</code> to prevent crashing on duplicates.</li>
+            <li><strong>Map the Keys:</strong> This is the most challenging part. When inserting a launch, the API gives you a string (e.g., "5e9d..."). You must look up the corresponding <strong>integer id</strong> from your <code>rockets</code> table to insert into the <code>launches</code> table.</li>
+            <li><em>Hint: You can do this via a Python dictionary lookup or a sub-query.</em></li>
+        </ul>
+
+        <h3>Task 4: Data Enrichment</h3>
+        <ul>
+            <li>Load all three tables into separate pandas DataFrames (<code>df_launches</code>, <code>df_rockets</code>, <code>df_launchpads</code>).</li>
+            <li>Perform a <strong>Left Merge</strong> to create a master dataset.</li>
+            <li><code>launches</code> + <code>rockets</code> (on rocket_id)</li>
+            <li><code>result</code> + <code>launchpads</code> (on launchpad_id)</li>
+        </ul>
+
+        <h3>Task 5: Mission Debrief (Analysis)</h3>
+        <p>Answer the following questions using pandas. Show your code.</p>
+        <ol>
+            <li><strong>The Workhorse:</strong> Which rocket has flown the most missions?</li>
+            <li><strong>Reliability Engineering:</strong> Which rocket has the highest success rate? (Filter out rockets with < 5 launches to avoid skew).</li>
+            <li><strong>Launch Cadence:</strong> Visualize or list the number of launches per year. Is the trend increasing?</li>
+            <li><strong>Geography:</strong> Which <code>region</code> has hosted the most launches?</li>
+            <li><strong>Failure Analysis:</strong> List the <code>name</code>, <code>date</code>, and <code>details</code> of every failed mission. What patterns do you see?</li>
+        </ol>
+    </section>
+
+    <div class="hacker-mode">
+        <h2>🔥 Hacker Mode (Optional / Extra Credit)</h2>
+        <ul>
+            <li><strong>Geospatial Plot:</strong> Use <code>matplotlib</code> or <code>folium</code> to plot the latitude/longitude of the launchpads on a map.</li>
+            <li><strong>The "Elon" Factor:</strong> Calculate the time difference (in days) between the current launch and the previous launch for a specific rocket core.</li>
+            <li><strong>Robustness:</strong> Wrap your API calls in a <code>try/except</code> block to handle network timeouts gracefully.</li>
+        </ul>
+    </div>
+
+    <section>
+        <h2>📦 Deliverables</h2>
+        <p>Submit the following flight packet:</p>
+        <ul>
+            <li><code>etl_pipeline.py</code> (or .ipynb): Your commented code.</li>
+            <li><code>spacex.db</code>: The resulting SQLite database file.</li>
+            <li><code>mission_report.csv</code>: The final merged dataset.</li>
+            <li><strong>Analysis Answers:</strong> A brief text or markdown summary answering the 5 questions in Phase 5.</li>
+        </ul>
+    </section>
+
+    <div class="quote">
+        "Failure is an option here. If things are not failing, you are not innovating enough." — But for this assignment, please make sure your code compiles. 😉
+    </div>
+
+</body>
+</html>
+
