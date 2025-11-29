@@ -1,0 +1,6 @@
+name_launch,date_utc,details,name_rocket,region
+FalconSat,2006-03-24 22:30:00+00:00,Engine failure at 33 seconds and loss of vehicle,Falcon 1,Marshall Islands
+DemoSat,2007-03-21 01:10:00+00:00,"Successful first stage burn and transition to second stage, maximum altitude 289 km, Premature engine shutdown at T+7 min 30 s, Failed to reach orbit, Failed to recover first stage",Falcon 1,Marshall Islands
+Trailblazer,2008-08-03 03:34:00+00:00,Residual stage 1 thrust led to collision between stage 1 and stage 2,Falcon 1,Marshall Islands
+CRS-7,2015-06-28 14:21:00+00:00,"Launch performance was nominal until an overpressure incident in the second-stage LOX tank, leading to vehicle breakup at T+150 seconds. The Dragon capsule survived the explosion but was lost upon splashdown because its software did not contain provisions for parachute deployment on launch vehicle failure.",Falcon 9,Florida
+Amos-6,2016-09-01 13:07:00+00:00,"The rocket and Amos-6 payload were lost in a launch pad explosion on September 1, 2016 during propellant fill prior to a static fire test. The pad was clear of personnel and there were no injuries.",Falcon 9,Florida
